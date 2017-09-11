@@ -7,7 +7,7 @@ Installation
 
 Update your `composer.json` file to include this package as a dependency
 ```json
-"witty/laravel-db-backup": "dev-master"
+"levgenij/laravel-db-backup": "1.*",
 ```
 
 
