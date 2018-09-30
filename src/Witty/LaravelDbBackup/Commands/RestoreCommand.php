@@ -17,6 +17,14 @@ class RestoreCommand extends BaseCommand
 	protected $description = 'Restore a dump from `app/storage/dumps`';
 	protected $database;
 
+    /**
+     * @return void
+     */
+    public function handle()
+    {
+        return $this->fire();
+    }
+
 	/**
 	 * @return void
 	 */

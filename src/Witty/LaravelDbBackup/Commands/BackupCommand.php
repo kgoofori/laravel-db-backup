@@ -20,6 +20,14 @@ class BackupCommand extends BaseCommand
 	protected $filePath;
 	protected $fileName;
 
+    /**
+     * @return void
+     */
+    public function handle()
+    {
+        return $this->fire();
+    }
+
 	/**
 	 * @return void
 	 */
