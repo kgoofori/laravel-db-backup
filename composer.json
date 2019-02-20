@@ -4,6 +4,10 @@
     "license": "MIT",
     "authors": [
         {
+            "name": "Vladyslav Ternal",
+            "email": "wlad.monax@gmail.com"
+        },
+        {
             "name": "Larkin Whitaker",
             "email": "larkinwhitaker@gmail.com"
         },
@@ -11,10 +15,7 @@
             "name": "Yevheniy Lypey",
             "email": "ilevgenij@gmail.com"
         },
-        {
-            "name": "Vladyslav Ternal",
-            "email": "wlad.monax@gmail.com"
-        }
+
     ],
     "require": {
         "php": ">=5.4.0",

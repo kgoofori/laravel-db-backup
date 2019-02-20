@@ -7,7 +7,7 @@ Installation
 
 Update your `composer.json` file to include this package as a dependency
 ```json
-"levgenij/laravel-db-backup": "1.*",
+"wladmonax/laravel-db-backup": "1.*",
 ```
 
 
