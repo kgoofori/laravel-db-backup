@@ -3,6 +3,7 @@
 namespace Witty\LaravelDbBackup\Commands;
 
 use Aws\Laravel\AwsFacade as AWS;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Symfony\Component\Console\Input\InputOption;
@@ -91,6 +92,17 @@ class BackupCommand extends BaseCommand
 
         }
 
+        // Save dump name to db
+        //----------------
+        if ($this->option('save-dump-name')){
+            Dump::create([
+                'file' => $this->filePath,
+                'file_name' => $this->fileName,
+                'prefix' =>  Config::get('db-backup.dropbox.prefix',null),
+                'encrypted' => $this->option('encrypt'),
+                'created_at' => Carbon::now()->timestamp
+            ]);
+        }
 
         $this->line($handler->dumpResponse($this->argument('filename'), $this->filePath, $this->fileName));
 
@@ -140,8 +152,9 @@ class BackupCommand extends BaseCommand
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to backup'],
             ['upload-s3', 'u', InputOption::VALUE_REQUIRED, 'Upload the dump to your S3 bucket'],
             ['keep-only-s3', true, InputOption::VALUE_NONE, 'Delete the local dump after upload to S3 bucket'],
-            ['dropbox'],
-            ['encrypt'],
+            ['dropbox', false, InputOption::VALUE_NONE, 'Save dump to dropbox'],
+            ['encrypt', false, InputOption::VALUE_NONE, 'Encrypt dump'],
+            ['save-dump-name', false, InputOption::VALUE_NONE, 'Save dump name to DB']
         ];
     }
 

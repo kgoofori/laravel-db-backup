@@ -24,7 +24,10 @@ class DBBackupServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../../config/config.php' => config_path('db-backup.php'),
 		]);
-	}
+
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+    }
 
 	/**
 	 * Register the service provider.

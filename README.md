@@ -91,6 +91,14 @@ $ php artisan db:backup --dropbox
 $ php artisan db:backup --upload-s3 your-bucket
 ```
 
+###### Save dump name to db
+Before this you must create dumps table in your DB.
+```sh
+$ php artisan migrate
+```
+```sh
+$ php artisan db:backup --save-dump-name
+```
 You can use the `--keep-only-s3` option if you don't want to keep a local copy of the SQL dump.
 
 Uses the [aws/aws-sdk-php-laravel](https://github.com/aws/aws-sdk-php-laravel) package which needs to be [configured](https://github.com/aws/aws-sdk-php-laravel#configuration).                                                                                                                                                                
