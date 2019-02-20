@@ -14,8 +14,7 @@
         {
             "name": "Yevheniy Lypey",
             "email": "ilevgenij@gmail.com"
-        },
-
+        }
     ],
     "require": {
         "php": ">=5.4.0",
