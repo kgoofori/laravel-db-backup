@@ -14,6 +14,7 @@ use Witty\LaravelDbBackup\Commands\Helpers\Encrypt;
 use League\Flysystem\Filesystem;
 use Spatie\Dropbox\Client;
 use Spatie\FlysystemDropbox\DropboxAdapter;
+use Witty\LaravelDbBackup\Models\Dump;
 
 /**
  * Class BackupCommand
