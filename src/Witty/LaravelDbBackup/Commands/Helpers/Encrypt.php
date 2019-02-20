@@ -2,7 +2,12 @@
 
 namespace Witty\LaravelDbBackup\Commands\Helpers;
 
+use Illuminate\Support\Facades\Config;
 
+/**
+ * Class Encrypt
+ * @package Witty\LaravelDbBackup\Commands\Helpers
+ */
 class Encrypt
 {
     /**

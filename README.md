@@ -93,8 +93,8 @@ $ php artisan db:backup --upload-s3 your-bucket
 
 You can use the `--keep-only-s3` option if you don't want to keep a local copy of the SQL dump.
 
-Uses the [aws/aws-sdk-php-laravel](https://github.com/aws/aws-sdk-php-laravel) package which needs to be [configured](https://github.com/aws/aws-sdk-php-laravel#configuration).
-Uses the [spatie/flysystem-dropbox](https://github.com/spatie/flysystem-dropbox) package.
+Uses the [aws/aws-sdk-php-laravel](https://github.com/aws/aws-sdk-php-laravel) package which needs to be [configured](https://github.com/aws/aws-sdk-php-laravel#configuration).                                                                                                                                                                
+Uses the [spatie/flysystem-dropbox](https://github.com/spatie/flysystem-dropbox) package.                                                                                                                                                                                                   
 
 #### Restore
 Paths are relative to the app/storage/dumps folder.
