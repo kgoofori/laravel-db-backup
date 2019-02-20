@@ -1,11 +1,19 @@
 {
-    "name": "levgenij/laravel-db-backup",
-    "description": "Easy commands to backup and restore databases for Laravel 5 applications",
+    "name": "wladmonax/laravel-db-backup",
+    "description": "Easy commands to backup and restore databases for Laravel 5 applications.Encrypting dumps.Save dumps to db and uploading to Dropbox.",
     "license": "MIT",
     "authors": [
         {
             "name": "Larkin Whitaker",
             "email": "larkinwhitaker@gmail.com"
+        },
+        {
+            "name": "Yevheniy Lypey",
+            "email": "ilevgenij@gmail.com"
+        },
+        {
+            "name": "Vladyslav Ternal",
+            "email": "wlad.monax@gmail.com"
         }
     ],
     "require": {
