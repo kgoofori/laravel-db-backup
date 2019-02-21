@@ -1,6 +1,6 @@
 {
     "name": "wladmonax/laravel-db-backup",
-    "description": "Easy commands to backup and restore databases for Laravel 5 applications.Encrypting dumps.Save dumps to db and uploading to Dropbox.",
+    "description": "Backup and restore databases. Encrypting dumps. Save dumps to db and uploading to Dropbox. Restore dump from Dropbox.",
     "license": "MIT",
     "authors": [
         {

@@ -10,11 +10,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Witty\LaravelDbBackup\Commands\Helpers\BackupFile;
 use Witty\LaravelDbBackup\Commands\Helpers\BackupHandler;
+use Witty\LaravelDbBackup\Commands\Helpers\DropBox;
 use Witty\LaravelDbBackup\Commands\Helpers\Encrypt;
-use League\Flysystem\Filesystem;
-use Spatie\Dropbox\Client;
-use Spatie\FlysystemDropbox\DropboxAdapter;
 use Witty\LaravelDbBackup\Models\Dump;
+
 
 /**
  * Class BackupCommand
@@ -78,32 +77,23 @@ class BackupCommand extends BaseCommand
 
         // Save to dropbox
         //----------------
-        if ($this->option('dropbox')){
+        if ($this->option('dropbox')) {
 
-            $accessToken = Config::get('db-backup.dropbox.accessToken');
-            $appSecret = Config::get('db-backup.dropbox.appSecret');
-            $prefix = Config::get('db-backup.dropbox.prefix');
-
-            $client = new Client($accessToken);
-            $adapter = new DropboxAdapter($client);
-            $filesystem = new Filesystem($adapter);
-
-            $content = file_get_contents($this->filePath);
-            $filesystem->put($prefix.'/'.$this->fileName,$content);
-
+            $dropBox = new DropBox();
+            if (!$dropBox->saveFile($this->fileName, $this->filePath)) {
+                return $this->line('Uploading to dropbox filed');
+            }
         }
 
         // Save dump name to db
         //----------------
-        if ($this->option('save-dump-name')){
-            Dump::create([
-                'file' => $this->filePath,
-                'file_name' => $this->fileName,
-                'prefix' =>  Config::get('db-backup.dropbox.prefix',null),
-                'encrypted' => $this->option('encrypt'),
-                'created_at' => Carbon::now()->timestamp
-            ]);
-        }
+        Dump::create([
+            'file' => $this->filePath,
+            'file_name' => $this->fileName,
+            'prefix' => Config::get('db-backup.dropbox.prefix', null),
+            'encrypted' => $this->option('encrypt'),
+            'created_at' => Carbon::now()->timestamp
+        ]);
 
         $this->line($handler->dumpResponse($this->argument('filename'), $this->filePath, $this->fileName));
 
@@ -155,7 +145,6 @@ class BackupCommand extends BaseCommand
             ['keep-only-s3', true, InputOption::VALUE_NONE, 'Delete the local dump after upload to S3 bucket'],
             ['dropbox', false, InputOption::VALUE_NONE, 'Save dump to dropbox'],
             ['encrypt', false, InputOption::VALUE_NONE, 'Encrypt dump'],
-            ['save-dump-name', false, InputOption::VALUE_NONE, 'Save dump name to DB']
         ];
     }
 

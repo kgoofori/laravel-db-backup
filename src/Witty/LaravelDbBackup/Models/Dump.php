@@ -32,7 +32,7 @@ class Dump extends Model
      * @var array
      */
     protected $fillable = [
-        'file','file_name','prefix','encrypted','created_at'
+        'file', 'file_name', 'prefix', 'encrypted', 'created_at'
     ];
 
 }
